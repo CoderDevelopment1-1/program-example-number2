@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript Log in Authentication.</h1>
+    <p>Username: username123</p>
+    <p>Password:123</p>
+    <p>Try to input a different password and username</p>
+    <label>Enter Username:</label>
+    <input type="text" id="enterUser"><br><br>
+    <label>Enter Password:</label>
+    <input type="text" id="enterPass"><br><br>
+    <button onclick="login()">Log-in</button><br>
+    <p id="result"></p>
+    <br><br><br>
+    <h1>JavaScript Electricity Consumption Bill</h1>
+    <p>Bigay ko sainyo yung table</p>
+    <table border="1" cellpadding="8" cellspacing="10" width="50%">
+        <tr>
+            <th>Electricity Consumption</th>
+            <th>Rate per Kwh</th>
+        </tr>
+        <tr>
+            <td>0–100 kWh</td>
+            <td>₱5</td>
+        </tr>
+        <tr>
+            <td>101–200 kWh</td>
+            <td>₱7</td>
+        </tr>
+        <tr>
+            <td>Above 200 kWh</td>
+            <td>₱10</td>
+        </tr>
+    </table><br><br>
+    <label>Enter Consumption:</label>
+    <input type="number" id="enterCon"><br><br>
+    <button onclick="calculate()">Calculate</button><br>
+    <p id="result1">Total Bill:</p>
+    <br><br><br>
+    <h1>JavaScript Online Shopping Discount</h1>
+    <label>Purchase Amount:</label>
+    <input type="number" id="enterAmount"><br><br>
+    <label>Membership:</label>
+    <select id="enterMember">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select><br><br>
+    <button onclick="check()">Check</button>
+    <p id="result2"></p>
+    <h1 id="finalResult"></h1>
+    <script>
+        function login(){
+            const correctUser="username123";
+            const correctPass="123";
+            let user=document.getElementById('enterUser').value;
+            let pass=document.getElementById('enterPass').value;
+            let print="";
+            if(correctUser === user){
+        if(correctPass === pass){
+            if(correctUser === user && correctPass === pass){
+                print = "Log-in Successful";
+            }else{
+                print = "";
+            }
+        }else{
+            print = "Incorrect password";
+        }
+    }else{
+        print = "Incorrect username";
+    }
+            document.getElementById('result').innerHTML=print;
+        }
+        function calculate(){
+            let consume=Number(document.getElementById('enterCon').value);
+
+            if(consume > 200){
+                print=consume * 10;
+            }else if(consume >= 101 && consume <= 200){
+                print=consume * 7;
+            }else{
+                print=consume * 5;
+            }
+            document.getElementById('result1').innerHTML="Total Bill: "+ print+ " pesos"; 
+        }
+        function check(){
+            let amount=Number(document.getElementById('enterAmount').value);
+            let membership=document.getElementById('enterMember').value;
+
+            if(amount >= 1000){
+                if(membership === "true"){
+                    print=amount * 0.2;
+                }else{
+                    print=amount * 0.1;
+                }
+            }else{
+                print=0;
+            }
+            document.getElementById('result2').innerHTML="₱"+ print;
+            document.getElementById('finalResult').innerHTML="Final Result: "+ "₱"+ (amount - print);
+        }
+    </script>
+</body>
+</html>
